@@ -41,14 +41,21 @@ SECCIÓN 3 - Regresión lineal                                [HECHO]
                 Función evaluar_reg (la usan también los avanzados).
                 Figuras en la carpeta figuras/.
 
-SECCIÓN 4 - Logística y KNN                                 [SIGUIENTE]
+SECCIÓN 4 - Logística y KNN                                 [HECHO]
   Qué toca:     Logística multinomial con L1 y L2 (qué variables quedan)
                 y KNN buscando el mejor k, para los niveles de TCH y
                 sacarosa.
   Pide el PDF:  Punto 2.1: benchmark de clasificación.
-  De dónde sale: Copiar de Anterior (notebook 08).
+  De dónde sale: Copiado de Anterior (notebook 08), solo lo que pide
+                el PDF.
+  Quedó:        Kappa en prueba a superar: TCH 0.11, sacarosa 0.29
+                (KNN corregido, k = 23).
+                Función evaluar_clf (la usan también los avanzados).
+                Importancia con L1: TCH -> tenencia y número de corte;
+                sacarosa -> semanas de madurante y mes de cosecha.
+                3 figuras nuevas en la carpeta figuras/.
 
-SECCIÓN 5 - Modelos avanzados de regresión                  [PENDIENTE]
+SECCIÓN 5 - Modelos avanzados de regresión                  [SIGUIENTE]
   Qué toca:     Dos modelos (propuesta: Random Forest y XGBoost) para TCH
                 y %Sac.Caña, con GridSearchCV solo en entrenamiento.
                 Explicar por qué pueden ganarle al lineal.
