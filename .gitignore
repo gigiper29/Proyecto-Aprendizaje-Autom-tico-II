@@ -1,0 +1,21 @@
+# Datos del Ingenio: confidenciales, NO se suben al repositorio
+Datos/
+**/data/raw/
+*.xlsx
+*.xls
+*.csv
+*.parquet
+*.pkl
+
+# Los CSV de resultados (métricas, no datos crudos) sí se pueden subir
+!**/reports/*.csv
+
+# Entornos, cachés y archivos del sistema
+venv/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+~$*

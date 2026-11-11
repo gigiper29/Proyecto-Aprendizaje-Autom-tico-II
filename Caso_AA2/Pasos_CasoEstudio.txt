@@ -1,0 +1,116 @@
+PASOS DEL CASO DE ESTUDIO - INGENIO PROVIDENCIA (Aprendizaje Automático II)
+Entrega: domingo 22 de noviembre de 2026
+Entregables: notebook CasoEstudio_Modelado.ipynb + informe PDF (máximo 5 páginas, sin código)
+Actualizado: 10 de noviembre de 2026
+
+======================================================================
+SECCIONES DEL NOTEBOOK
+======================================================================
+
+SECCIÓN 0 - Configuración                                   [HECHO]
+  Qué toca:     Librerías y semilla.
+  Pide el PDF:  Nada en particular.
+  De dónde sale: Nuevo.
+
+SECCIÓN 1 - Datos y partición                               [HECHO]
+  Qué toca:     Cargar datos, filtros, predictoras, clases Bajo/Medio/Alto
+                y partir 80/20 por grupos.
+  Pide el PDF:  Punto 2.3: hold-out 80/20 desde el inicio.
+  De dónde sale: Copiado de Anterior.
+
+SECCIÓN 2 - Preprocesamiento                                [HECHO]
+  Qué toca:     Reglas de negocio (ceros de lluvia = sin dato, errores de
+                captura), imputación, codificación de categóricas y
+                escalado, todo dentro del Pipeline. Una versión para
+                modelos lineales/KNN y otra para árboles.
+  Pide el PDF:  Punto 2.3: nada se calcula con datos de prueba.
+  De dónde sale: Copiado de Anterior (da exactamente lo mismo). Nueva:
+                la versión de árboles para clasificación.
+  Quedó:        preprocesador_reg("lineal" | "arbol") y
+                preprocesador_clf("logistica" | "knn" | "arbol").
+
+SECCIÓN 3 - Regresión lineal                                [HECHO]
+  Qué toca:     Regresión lineal múltiple para TCH y %Sac.Caña. Tabla de
+                coeficientes con p-valores, signo y magnitud.
+                Métricas: R2, RMSE, MAE.
+  Pide el PDF:  Punto 2.1: benchmark de regresión.
+  De dónde sale: Copiado de Anterior (notebook 03), solo lo que pide
+                el PDF.
+  Quedó:        R2 en prueba: TCH 0.314, %Sac.Caña 0.370.
+                RMSE en prueba: 26.1 t/ha y 0.91 puntos.
+                Función evaluar_reg (la usan también los avanzados).
+                Figuras en la carpeta figuras/.
+
+SECCIÓN 4 - Logística y KNN                                 [SIGUIENTE]
+  Qué toca:     Logística multinomial con L1 y L2 (qué variables quedan)
+                y KNN buscando el mejor k, para los niveles de TCH y
+                sacarosa.
+  Pide el PDF:  Punto 2.1: benchmark de clasificación.
+  De dónde sale: Copiar de Anterior (notebook 08).
+
+SECCIÓN 5 - Modelos avanzados de regresión                  [PENDIENTE]
+  Qué toca:     Dos modelos (propuesta: Random Forest y XGBoost) para TCH
+                y %Sac.Caña, con GridSearchCV solo en entrenamiento.
+                Explicar por qué pueden ganarle al lineal.
+  Pide el PDF:  Punto 2.2: al menos dos modelos avanzados + justificación.
+  De dónde sale: NUEVO.
+
+SECCIÓN 6 - Modelos avanzados de clasificación              [PENDIENTE]
+  Qué toca:     Los mismos dos modelos para los niveles de TCH y sacarosa,
+                con balanceo de clases y GridSearchCV.
+  Pide el PDF:  Punto 2.2.
+  De dónde sale: NUEVO.
+
+SECCIÓN 7 - Comparación y mejor modelo                      [PENDIENTE]
+  Qué toca:     Tablas con todos los modelos (validación cruzada vs.
+                prueba), matrices de confusión, gráficos de real contra
+                predicho, y elegir el mejor de cada tarea con su
+                justificación.
+  Pide el PDF:  Criterio "Validación y métricas" (20 %).
+  De dónde sale: NUEVO (parte de las matrices sale de Anterior).
+
+SECCIÓN 8 - Interpretabilidad                               [PENDIENTE]
+  Qué toca:     Importancia de variables de los modelos avanzados,
+                comparar con los coeficientes del lineal y la logística,
+                y traducirlo a recomendaciones para el Ingenio.
+  Pide el PDF:  Punto 2.2 y criterio "Interpretabilidad" (20 %).
+  De dónde sale: NUEVO.
+
+SECCIÓN 9 - Conclusiones                                    [PENDIENTE]
+  Qué toca:     Cierre corto del notebook: qué modelo sirve para qué y
+                sus límites.
+  Pide el PDF:  Nada en particular.
+  De dónde sale: Nuevo.
+
+======================================================================
+DESPUÉS DEL NOTEBOOK
+======================================================================
+
+INFORME PDF                                                 [PENDIENTE]
+  Qué toca:     Portada, resumen (máximo 250 palabras), introducción,
+                metodología, resultados y discusión, conclusiones y
+                referencias. Máximo 5 páginas, sin código.
+  Pide el PDF:  Tarea II y criterio "Comunicación" (20 %).
+  De dónde sale: Base: informe corregido de Anterior + resultados nuevos.
+
+======================================================================
+RÚBRICA (cómo califican)
+======================================================================
+  40 %  Desarrollo y ajuste de modelos (benchmark + 2 avanzados,
+        GridSearchCV con validación cruzada, train/test estricto)
+  20 %  Validación y métricas (tablas comparativas, mejor modelo
+        justificado)
+  20 %  Interpretabilidad e insights (importancia de variables,
+        coeficientes, conexión con el negocio)
+  20 %  Comunicación de resultados (informe claro, con gráficos,
+        sin código)
+
+======================================================================
+PENDIENTES SUELTOS
+======================================================================
+  - Poner los nombres del grupo en la portada del notebook.
+  - Confirmar con el grupo los dos modelos avanzados
+    (propuesta: Random Forest + XGBoost).
+  - Pedir al compañero sus CSV si se quieren cifras idénticas al
+    informe anterior (con los Excel cambian en el tercer decimal).
+  - La carpeta Anterior no se toca: ya está calificada.
