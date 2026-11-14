@@ -55,39 +55,79 @@ SECCIÓN 4 - Logística y KNN                                 [HECHO]
                 sacarosa -> semanas de madurante y mes de cosecha.
                 3 figuras nuevas en la carpeta figuras/.
 
-SECCIÓN 5 - Modelos avanzados de regresión                  [SIGUIENTE]
-  Qué toca:     Dos modelos (propuesta: Random Forest y XGBoost) para TCH
-                y %Sac.Caña, con GridSearchCV solo en entrenamiento.
+SECCIÓN 5 - Modelos avanzados de regresión                  [HECHO]
+  Qué toca:     Random Forest y XGBoost para TCH y %Sac.Caña, con
+                GridSearchCV solo en entrenamiento.
                 Explicar por qué pueden ganarle al lineal.
   Pide el PDF:  Punto 2.2: al menos dos modelos avanzados + justificación.
   De dónde sale: NUEVO.
+  Quedó:        R2 en prueba, TCH: lineal 0.314, Random Forest 0.487,
+                XGBoost 0.520.
+                R2 en prueba, %Sac.Caña: lineal 0.370, Random Forest
+                0.494, XGBoost 0.530.
+                XGBoost es el mejor en los dos (baja el RMSE 16 % en TCH
+                y 14 % en sacarosa frente a la lineal).
+                2 figuras nuevas en figuras/. El notebook completo ahora
+                tarda unos 15 minutos en correr.
 
-SECCIÓN 6 - Modelos avanzados de clasificación              [PENDIENTE]
-  Qué toca:     Los mismos dos modelos para los niveles de TCH y sacarosa,
-                con balanceo de clases y GridSearchCV.
+SECCIÓN 6 - Modelos avanzados de clasificación              [HECHO]
+  Qué toca:     Random Forest y XGBoost para los niveles de TCH y
+                sacarosa, con balanceo de clases y GridSearchCV.
   Pide el PDF:  Punto 2.2.
   De dónde sale: NUEVO.
+  Quedó:        Aquí los avanzados NO superan claramente a los de
+                referencia (al contrario de la regresión).
+                Kappa en prueba, TCH: Random Forest 0.124, XGBoost 0.116,
+                KNN corregido 0.111 -> empate.
+                Kappa en prueba, sacarosa: KNN corregido 0.289, Random
+                Forest 0.263, XGBoost 0.224 -> gana KNN corregido.
+                Razón: pocos datos (1 749), 8 variables, una sola
+                variedad, sin suelo ni zona.
+                1 figura nueva en figuras/.
 
-SECCIÓN 7 - Comparación y mejor modelo                      [PENDIENTE]
-  Qué toca:     Tablas con todos los modelos (validación cruzada vs.
-                prueba), matrices de confusión, gráficos de real contra
-                predicho, y elegir el mejor de cada tarea con su
-                justificación.
+SECCIÓN 7 - Comparación y mejor modelo                      [HECHO]
+  Qué toca:     Tablas y figuras con todos los modelos (validación
+                cruzada vs. prueba) y elegir el mejor de cada tarea con
+                su justificación.
   Pide el PDF:  Criterio "Validación y métricas" (20 %).
-  De dónde sale: NUEVO (parte de las matrices sale de Anterior).
+  De dónde sale: NUEVO.
+  Quedó:        Regla: se escoge con validación cruzada; la prueba solo
+                confirma; si hay empate, el más simple.
+                Escogidos: XGBoost (TCH y %Sac.Caña en regresión),
+                KNN corregido (niveles de sacarosa), Logística L1
+                (niveles de TCH, por empate).
+                Bootstrap por grupos: en regresión las diferencias son
+                reales; en clasificación ninguna es concluyente.
 
-SECCIÓN 8 - Interpretabilidad                               [PENDIENTE]
+SECCIÓN 8 - Interpretabilidad                               [HECHO]
   Qué toca:     Importancia de variables de los modelos avanzados,
                 comparar con los coeficientes del lineal y la logística,
                 y traducirlo a recomendaciones para el Ingenio.
   Pide el PDF:  Punto 2.2 y criterio "Interpretabilidad" (20 %).
   De dónde sale: NUEVO.
+  Quedó:        Importancia por permutación (en prueba).
+                TCH: distancia, edad, período y variedad.
+                Sacarosa: período (época), producto y dosis de madurante.
+                OJO: la distancia le sirve a XGBoost para reconocer la
+                hacienda. En haciendas nuevas su R2 baja de 0.52 a 0.37
+                (TCH) y de 0.53 a 0.46 (sacarosa); sigue ganándole a la
+                lineal.
+                Curvas de XGBoost: el TCH cae rápido en los primeros 4
+                cortes; la sacarosa llega al máximo en la semana 10 de
+                madurante.
+                Tabla de recomendaciones para el Ingenio (8.4).
 
-SECCIÓN 9 - Conclusiones                                    [PENDIENTE]
+SECCIÓN 9 - Conclusiones                                    [HECHO]
   Qué toca:     Cierre corto del notebook: qué modelo sirve para qué y
                 sus límites.
   Pide el PDF:  Nada en particular.
   De dónde sale: Nuevo.
+  Quedó:        Tabla resumen, 4 conclusiones, utilidad, mejoras
+                propuestas y limitaciones.
+
+NOTEBOOK COMPLETO: 105 celdas, corre de arriba abajo sin errores en unos
+16 minutos. 13 figuras en la carpeta figuras/.
+Los nombres del grupo ya están en la portada.
 
 ======================================================================
 DESPUÉS DEL NOTEBOOK
@@ -115,7 +155,6 @@ RÚBRICA (cómo califican)
 ======================================================================
 PENDIENTES SUELTOS
 ======================================================================
-  - Poner los nombres del grupo en la portada del notebook.
   - Confirmar con el grupo los dos modelos avanzados
     (propuesta: Random Forest + XGBoost).
   - Pedir al compañero sus CSV si se quieren cifras idénticas al
